@@ -1,3 +1,13 @@
-h1 { 
-  font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+		@font-face {
+				font-family: 'Candara';
+				src: url('candara.eot');
+				src: url('candara.eot?#iefix') format('embedded-opentype'),
+						 url('candara.woff') format('woff'),
+						 url('candara.ttf') format('truetype'),
+						 url('candara.svg#candara') format('svg');
+				font-weight: normal;
+				font-style: normal;
+		}
+body {
+  style="font-family:'Candara'; padding: 80px; text-align: center;
 }
