@@ -7,27 +7,10 @@
       kaboom();
 
       // Init with some options (check out #KaboomOpt for full options list)
-      kaboom({
-        width: 320,
-        height: 240,
-        font: "sans-serif",
-        canvas: document.querySelector("#mycanvas"),
-        background: [ 0, 0, 255, ],
-      });
-
-      // All kaboom functions are imported to global after calling kaboom()
-      add();
-      onUpdate();
-      onKeyPress();
-      vec2();
-
-      // If you want to prevent kaboom from importing all functions to global and use a context handle for all kaboom functions
-      const k = kaboom({ global: false });
-
-      k.add(...);
-      k.onUpdate(...);
-      k.onKeyPress(...);
-      k.vec2(...);
+      add([
+        text("hello"),
+        pos(120, 80),
+      ]);
     </script>
   </body>
 </html>
