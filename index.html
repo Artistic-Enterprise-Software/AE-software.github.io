@@ -38,15 +38,28 @@ add([
     body({ isStatic: true }),
     color(127, 200, 255),
 ])
-      add([
-    rect(48, 64),
-    area(),
-    outline(4),
-    pos(width(), height() - 48),
-    anchor("botleft"),
-    color(255, 180, 255),
-    move(LEFT, 240),
-]);
+function spawnTree() {
+    add([
+        rect(48, 64),
+        area(),
+        outline(4),
+        pos(width(), height() - 48),
+        anchor("botleft"),
+        color(255, 180, 255),
+        move(LEFT, 240),
+        "tree"
+    ]);
+    wait(rand(0.5, 1.5), () => {
+        spawnTree();
+    });
+}
+
+spawnTree();
+      
+bean.onCollide("tree", () => {
+    addKaboom(bean.pos);
+    shake();
+});
     </script>
   </body>
 </html>
