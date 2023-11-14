@@ -13,21 +13,21 @@
         font: "sans-serif",
         canvas: document.querySelector("#mycanvas"),
         background: [ 0, 0, 255, ],
-      })
+      });
 
       // All kaboom functions are imported to global after calling kaboom()
-      add()
-      onUpdate()
-      onKeyPress()
-      vec2()
+      add();
+      onUpdate();
+      onKeyPress();
+      vec2();
 
       // If you want to prevent kaboom from importing all functions to global and use a context handle for all kaboom functions
       const k = kaboom({ global: false });
 
-      k.add(...)
-      k.onUpdate(...)
-      k.onKeyPress(...)
-      k.vec2(...)
+      k.add(...);
+      k.onUpdate(...);
+      k.onKeyPress(...);
+      k.vec2(...);
     </script>
   </body>
 </html>
