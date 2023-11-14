@@ -29,27 +29,40 @@ onKeyPress("space", () => {
     // .jump() is provided by the body() component
     player.jump()
 })
-      kaboom({
-    width: 320,
-    height: 240,
-    font: "sans-serif",
-    canvas: document.querySelector("#mycanvas"),
-    background: [ 0, 0, 255, ],
+      const player = add([
+    // List of components, each offers a set of functionalities
+    sprite("mark"),
+    pos(100, 200),
+    area(),
+    body(),
+    health(8),
+    // Plain strings are tags, a quicker way to let us define behaviors for a group
+    "player",
+    "friendly",
+    // Components are just plain objects, you can pass an object literal as a component.
+    {
+        dir: LEFT,
+        dead: false,
+        speed: 240,
+    },
+])
+
+// .jump is provided by body()
+player.jump()
+
+// .moveTo is provided by pos()
+player.moveTo(300, 200)
+
+// .onUpdate() is on every game object, it registers an event that runs every frame
+player.onUpdate(() => {
+    // .move() is provided by pos()
+    player.move(player.dir.scale(player.speed))
 })
 
-// All kaboom functions are imported to global after calling kaboom()
-add()
-onUpdate()
-onKeyPress()
-vec2()
-
-// If you want to prevent kaboom from importing all functions to global and use a context handle for all kaboom functions
-const k = kaboom({ global: false })
-
-k.add(...)
-k.onUpdate(...)
-k.onKeyPress(...)
-k.vec2(...)
+// .onCollide is provided by area()
+player.onCollide("tree", () => {
+    destroy(player)
+})
     </script>
   </body>
 </html>
