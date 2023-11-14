@@ -29,40 +29,14 @@ onKeyPress("space", () => {
     // .jump() is provided by the body() component
     player.jump()
 })
-      const player = add([
-    // List of components, each offers a set of functionalities
-    sprite("mark"),
-    pos(100, 200),
+add([
+    rect(width(), 48),
+    pos(0, height() - 48),
+    outline(4),
     area(),
-    body(),
-    health(8),
-    // Plain strings are tags, a quicker way to let us define behaviors for a group
-    "player",
-    "friendly",
-    // Components are just plain objects, you can pass an object literal as a component.
-    {
-        dir: LEFT,
-        dead: false,
-        speed: 240,
-    },
+    body({ isStatic: true }),
+    color(127, 200, 255),
 ])
-
-// .jump is provided by body()
-player.jump()
-
-// .moveTo is provided by pos()
-player.moveTo(300, 200)
-
-// .onUpdate() is on every game object, it registers an event that runs every frame
-player.onUpdate(() => {
-    // .move() is provided by pos()
-    player.move(player.dir.scale(player.speed))
-})
-
-// .onCollide is provided by area()
-player.onCollide("tree", () => {
-    destroy(player)
-})
     </script>
   </body>
 </html>
